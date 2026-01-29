@@ -52,5 +52,5 @@ inmobiliaria.db
 *.log
 .DS_Store
 
-.txt
-.csv
+*.txt
+*.csv
