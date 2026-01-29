@@ -1,7 +1,8 @@
 const {
     importarDesdeExcel,
     importarDesdeCSV,
-    importarManualPDF
+    importarManualPDF,
+    importarManualTexto
   } = require('./importar');
   
   async function main() {
@@ -10,11 +11,11 @@ const {
     try {
       // Importar propiedades (descomenta el que uses)
       console.log('📥 Importando propiedades...');
-      await importarDesdeExcel('./propiedades.xlsx');
-      // await importarDesdeCSV('./propiedades.csv');
+      //await importarDesdeExcel('./propiedades.xlsx');
+      await importarDesdeCSV('./propiedades.csv');
       
       console.log('\n📚 Importando manual...');
-      await importarManualPDF('./manual-gestion.pdf');
+      await importarManualTexto('./manual-Gestion.txt');
       
       console.log('\n✅ ¡Importación completada!');
     } catch (error) {
