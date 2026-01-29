@@ -19,22 +19,16 @@ async function importarDesdeCSV(rutaArchivo) {
       .pipe(csv())
       .on('data', (row) => {
         propiedades.push({
-          referencia: row.referencia || generarReferencia(),
-          tipo: row.tipo, // piso, casa, local, apartamento, etc.
-          operacion: row.operacion, // venta, alquiler
-          precio: parseFloat(row.precio),
-          habitaciones: parseInt(row.habitaciones),
-          banos: parseInt(row.banos),
-          metros: parseFloat(row.metros),
-          direccion: row.direccion,
+          referencia: row.id_propiedad || generarReferencia(),
+          tipo: row.id_propiedad_tipo, // piso, casa, local, apartamento, etc.
+          operacion: row.en_venta, // venta, alquiler
+          precio: parseFloat(row.precio_venta),
+          habitaciones: parseInt(row.dormitorios),
+          banos: parseInt(row.banios),
+          metros: parseFloat(row.superficie),
+          direccion: row.zona,
           ciudad: row.ciudad,
-          codigo_postal: row.codigo_postal,
-          descripcion: row.descripcion,
-          caracteristicas: JSON.stringify(row.caracteristicas?.split(';') || []),
-          estado: row.estado || 'disponible',
-          fotos: row.fotos || '',
-          fecha_alta: row.fecha_alta || new Date().toISOString(),
-          agente: row.agente || 'Sin asignar'
+          descripcion: row.descripcion
         });
       })
       .on('end', async () => {
@@ -69,14 +63,7 @@ async function importarDesdeExcel(rutaArchivo) {
       direccion: row.Direccion,
       ciudad: row.Ciudad,
       codigo_postal: row.CodigoPostal || row.CP,
-      descripcion: row.Descripcion,
-      caracteristicas: JSON.stringify(
-        row.Caracteristicas?.split(';').map(c => c.trim()) || []
-      ),
-      estado: row.Estado?.toLowerCase() || 'disponible',
-      fotos: row.Fotos || '',
-      fecha_alta: row.FechaAlta || new Date().toISOString(),
-      agente: row.Agente || 'Sin asignar'
+      descripcion: row.Descripcion
     };
     
     await insertarPropiedad(prop);
