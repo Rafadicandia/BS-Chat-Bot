@@ -43,3 +43,11 @@ build/
 
 node_modules
 
+node_modules/
+credentials.json
+token.json
+.wwebjs_auth/
+.env
+inmobiliaria.db
+*.log
+.DS_Store
