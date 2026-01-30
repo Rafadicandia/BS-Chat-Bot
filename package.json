@@ -18,7 +18,7 @@
     "pdf-parse": "^2.4.5",
     "qrcode-terminal": "^0.12.0",
     "sqlite3": "^5.1.7",
-    "whatsapp-web.js": "^1.34.4",
+    "whatsapp-web.js": "^1.23.0",
     "xlsx": "^0.18.5"
   }
 }
